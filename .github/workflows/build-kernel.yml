@@ -151,9 +151,9 @@ jobs:
           else
               wget -O gcc-64.zip ${{ env.CUSTOM_GCC_64_SOURCE }}
               mkdir gcc-64
-              unzip gcc-64.zip -d gcc-64/
+              tar -xf gcc-64.zip -C gcc-64/
           fi
-          echo "GCC_64=CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-64/bin/${{ env.CUSTOM_GCC_64_BIN }}" >> $GITHUB_ENV
+          echo "GCC_64=CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-64/gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu/bin/${{ env.CUSTOM_GCC_64_BIN }}" >> $GITHUB_ENV
         fi
 
         if [ ${{ env.USE_CUSTOM_GCC_32 }} = true ]; then
