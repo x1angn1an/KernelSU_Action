@@ -151,7 +151,7 @@ jobs:
           else
               wget -O gcc-64.zip ${{ env.CUSTOM_GCC_64_SOURCE }}
               mkdir gcc-64
-              tar -xf gcc-64.zip -C gcc-64/
+              tar -xf gcc-64.zip -C gcc-64/ || unzip gcc-64.zip -d gcc-64/ || 7z x gcc-64.zip -ogcc-64/
           fi
           echo "GCC_64=CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-64/gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu/bin/${{ env.CUSTOM_GCC_64_BIN }}" >> $GITHUB_ENV
         fi
@@ -168,7 +168,7 @@ jobs:
           else
             wget -O gcc-32.zip ${{ env.CUSTOM_GCC_32_SOURCE }}
             mkdir gcc-32
-            tar -xf gcc-32.zip -C gcc-32/
+            tar -xf gcc-32.zip -C gcc-32/ || unzip gcc-32.zip -d gcc-32/ || 7z x gcc-32.zip -ogcc-32/
           fi
           echo "GCC_32=CROSS_COMPILE_ARM32=$GITHUB_WORKSPACE/kernel_workspace/gcc-32/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabi/bin/${{ env.CUSTOM_GCC_32_BIN }}" >> $GITHUB_ENV
         fi
